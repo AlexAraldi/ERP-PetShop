@@ -1,4 +1,4 @@
-﻿namespace PetshopDoLeo.ConsoleApp.Compartilhado;
+﻿namespace PetShopConsoleApp1.Compartilhado;
 
 public static class Notificador
 {

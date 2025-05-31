@@ -1,7 +1,9 @@
-﻿using PetshopDoLeo.ConsoleApp.ModuloDono;
-using PetshopDoLeo.ConsoleApp.ModuloPet;
+﻿
 
-namespace PetshopDoLeo.ConsoleApp.Compartilhado;
+using PetShopConsoleApp1.ModuloDono;
+using PetShopConsoleApp1.ModuloPet;
+
+namespace PetShopConsoleApp1.Compartilhado;
 
 public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase<TEntidade>
 {
@@ -14,6 +16,7 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase<TEntida
         this.repositorio = repositorio;
     }
 
+  
     protected void ExibirCabecalho()
     {
         Console.Clear();
@@ -125,11 +128,11 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase<TEntida
         VisualizarRegistros(false);
 
         Console.Write("Digite o ID do registro que deseja selecionar: ");
-        int idFabricante = Convert.ToInt32(Console.ReadLine());
+        int idRegistro = Convert.ToInt32(Console.ReadLine());
 
         Console.WriteLine();
 
-        bool conseguiuExcluir = repositorio.ExcluirRegistro(idFabricante);
+        bool conseguiuExcluir = repositorio.ExcluirRegistro(idRegistro);
 
         if (!conseguiuExcluir)
         {
@@ -147,7 +150,9 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase<TEntida
 
         ExibirCabecalhoTabela(); //escrita cabeçalho
 
-        TEntidade[] registros = repositorio.SelecionarRegistros();
+        TEntidade[] registros = repositorio.SelecionarRegistros()
+                                           .OfType<TEntidade>()
+                                           .ToArray();
 
         foreach (TEntidade registro in registros)
         {
@@ -164,4 +169,8 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase<TEntida
 
     protected abstract TEntidade ObterDados();
 
+    public class TYEntidade
+    {
+    }
 }
+

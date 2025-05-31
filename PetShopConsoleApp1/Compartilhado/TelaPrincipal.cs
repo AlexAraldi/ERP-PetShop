@@ -1,7 +1,6 @@
-﻿using PetshopDoLeo.ConsoleApp.ModuloDono;
-using PetshopDoLeo.ConsoleApp.ModuloPet;
-
-namespace PetshopDoLeo.ConsoleApp.Compartilhado;
+﻿using PetShopConsoleApp1.ModuloDono;
+using PetShopConsoleApp1.ModuloPet;
+namespace PetShopConsoleApp1.Compartilhado;
 
 public class TelaPrincipal
 {
@@ -16,13 +15,13 @@ public class TelaPrincipal
     public TelaPrincipal()
     {
         repositorioDono = new RepositorioDono();
-        Dono novoDono = new Dono("Gabriel Velho");
+        Dono novoDono = new Dono(" ");
         repositorioDono.CadastrarRegistro(novoDono);
 
         telaDono = new TelaDono("Dono", repositorioDono);
 
         repositorioPet = new RepositorioPet();
-        repositorioPet.CadastrarRegistro(new Pet("Bob", novoDono));
+        repositorioPet.CadastrarRegistro(new Pet(" ", novoDono));
 
         telaPet = new TelaPet("Pet", repositorioPet, telaDono, repositorioDono);
     }
